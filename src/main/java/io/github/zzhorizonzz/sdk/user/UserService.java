@@ -15,8 +15,6 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 public class UserService extends BaseService {
-
-    private static final String USERS_URL = "users";
     private final UserRequestMapper userRequestMapper = Mappers.getMapper(UserRequestMapper.class);
     private final ListAllUsersRequestMapper listAllUsersRequestMapper = Mappers.getMapper(ListAllUsersRequestMapper.class);
     private final UpdateUserRequestMapper updateUserRequestMapper = Mappers.getMapper(UpdateUserRequestMapper.class);

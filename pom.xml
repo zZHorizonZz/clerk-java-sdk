@@ -73,11 +73,6 @@
             <version>3.0.0-M1</version>
         </dependency>
         <dependency>
-            <groupId>io.kiota</groupId>
-            <artifactId>kiota-serialization-jackson</artifactId>
-            <version>${kiota.plugin.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-jwt</artifactId>
             <version>${quarkus.version}</version>
@@ -128,8 +123,8 @@
                     <kiotaVersion>1.10.1</kiotaVersion>
                     <namespace>io.github.zzhorizonzz</namespace>
                     <clientClass>ClerkHttpClient</clientClass>
-                    <serializers>io.kiota.serialization.json.JsonSerializationWriterFactory</serializers>
-                    <deserializers>io.kiota.serialization.json.JsonParseNodeFactory</deserializers>
+                    <serializers>com.microsoft.kiota.serialization.JsonSerializationWriterFactory</serializers>
+                    <deserializers>com.microsoft.kiota.serialization.JsonParseNodeFactory</deserializers>
                 </configuration>
             </plugin>
             <plugin>
