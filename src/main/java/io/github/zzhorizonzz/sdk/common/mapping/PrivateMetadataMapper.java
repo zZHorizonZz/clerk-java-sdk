@@ -1,8 +1,8 @@
 package io.github.zzhorizonzz.sdk.common.mapping;
 
-import io.github.zzhorizonzz.users.UsersPostRequestBodyPrivateMetadata;
-import io.github.zzhorizonzz.users.item.WithUserPatchRequestBodyPrivateMetadata;
-import io.github.zzhorizonzz.users.item.metadata.MetadataPatchRequestBodyPrivateMetadata;
+import io.github.zzhorizonzz.client.users.UsersPostRequestBodyPrivateMetadata;
+import io.github.zzhorizonzz.client.users.item.WithUserPatchRequestBodyPrivateMetadata;
+import io.github.zzhorizonzz.client.users.item.metadata.MetadataPatchRequestBodyPrivateMetadata;
 import org.mapstruct.Mapper;
 
 import java.util.Map;

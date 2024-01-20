@@ -9,6 +9,23 @@
     <version>0.0.1</version>
     <name>Clerk - Java - SDK</name>
 
+    <developers>
+        <developer>
+            <name>Horizon</name>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <url>https://github.com/zZHorizonZz/clerk-java-sdk</url>
+    <description>Clerk - Java - SDK</description>
+    <scm>
+        <url>scm:git:git://github.com/zZHorizonZz/clerk-java-sdk.git</url>
+    </scm>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -101,7 +118,7 @@
                 <configuration>
                     <file>openapi.json</file>
                     <kiotaVersion>1.10.1</kiotaVersion>
-                    <namespace>io.github.zzhorizonzz</namespace>
+                    <namespace>io.github.zzhorizonzz.client</namespace>
                     <clientClass>ClerkHttpClient</clientClass>
                     <serializers>com.microsoft.kiota.serialization.JsonSerializationWriterFactory</serializers>
                     <deserializers>com.microsoft.kiota.serialization.JsonParseNodeFactory</deserializers>
@@ -132,6 +149,58 @@
                             <version>${org.mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludePackageNames>io.github.zzhorizonzz.client.*</excludePackageNames>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.1.2</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenEnabled>true</tokenEnabled>
                 </configuration>
             </plugin>
         </plugins>

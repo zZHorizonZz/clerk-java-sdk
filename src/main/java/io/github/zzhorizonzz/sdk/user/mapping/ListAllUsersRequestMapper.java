@@ -2,8 +2,8 @@ package io.github.zzhorizonzz.sdk.user.mapping;
 
 import io.github.zzhorizonzz.sdk.common.mapping.NumberMapper;
 import io.github.zzhorizonzz.sdk.user.request.ListAllUsersRequest;
-import io.github.zzhorizonzz.users.UsersRequestBuilder;
-import io.github.zzhorizonzz.users.count.CountRequestBuilder;
+import io.github.zzhorizonzz.client.users.UsersRequestBuilder;
+import io.github.zzhorizonzz.client.users.count.CountRequestBuilder;
 import org.mapstruct.Mapper;
 
 import java.util.Arrays;

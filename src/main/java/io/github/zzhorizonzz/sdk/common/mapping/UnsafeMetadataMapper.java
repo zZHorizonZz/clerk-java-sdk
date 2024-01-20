@@ -1,8 +1,8 @@
 package io.github.zzhorizonzz.sdk.common.mapping;
 
-import io.github.zzhorizonzz.users.UsersPostRequestBodyUnsafeMetadata;
-import io.github.zzhorizonzz.users.item.WithUserPatchRequestBodyUnsafeMetadata;
-import io.github.zzhorizonzz.users.item.metadata.MetadataPatchRequestBodyUnsafeMetadata;
+import io.github.zzhorizonzz.client.users.UsersPostRequestBodyUnsafeMetadata;
+import io.github.zzhorizonzz.client.users.item.WithUserPatchRequestBodyUnsafeMetadata;
+import io.github.zzhorizonzz.client.users.item.metadata.MetadataPatchRequestBodyUnsafeMetadata;
 import org.mapstruct.Mapper;
 
 import java.util.Map;

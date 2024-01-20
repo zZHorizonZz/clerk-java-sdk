@@ -1,15 +1,15 @@
 package io.github.zzhorizonzz.sdk.user;
 
-import io.github.zzhorizonzz.models.DeletedObject;
-import io.github.zzhorizonzz.models.OrganizationMemberships;
-import io.github.zzhorizonzz.models.TotalCount;
-import io.github.zzhorizonzz.models.User;
+import io.github.zzhorizonzz.client.models.DeletedObject;
+import io.github.zzhorizonzz.client.models.OrganizationMemberships;
+import io.github.zzhorizonzz.client.models.TotalCount;
+import io.github.zzhorizonzz.client.models.User;
 import io.github.zzhorizonzz.sdk.BaseService;
 import io.github.zzhorizonzz.sdk.ClerkClient;
 import io.github.zzhorizonzz.sdk.user.mapping.*;
 import io.github.zzhorizonzz.sdk.user.request.*;
-import io.github.zzhorizonzz.users.item.mfa.MfaDeleteResponse;
-import io.github.zzhorizonzz.users.item.oauth_access_tokens.item.WithProvider;
+import io.github.zzhorizonzz.client.users.item.mfa.MfaDeleteResponse;
+import io.github.zzhorizonzz.client.users.item.oauth_access_tokens.item.WithProvider;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package io.github.zzhorizonzz.sdk.user.mapping;
 
 import io.github.zzhorizonzz.sdk.common.mapping.NumberMapper;
 import io.github.zzhorizonzz.sdk.user.request.ListMembershipsRequest;
-import io.github.zzhorizonzz.users.item.organization_memberships.OrganizationMembershipsRequestBuilder;
+import io.github.zzhorizonzz.client.users.item.organization_memberships.OrganizationMembershipsRequestBuilder;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = {NumberMapper.class})

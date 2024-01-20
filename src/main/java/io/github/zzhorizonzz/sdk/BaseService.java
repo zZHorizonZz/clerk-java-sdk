@@ -1,6 +1,6 @@
 package io.github.zzhorizonzz.sdk;
 
-import io.github.zzhorizonzz.ClerkHttpClient;
+import io.github.zzhorizonzz.client.ClerkHttpClient;
 import lombok.Getter;
 
 @Getter
