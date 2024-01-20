@@ -1,23 +1,23 @@
 package io.github.zzhorizonzz.sdk.jwt;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.jose4j.jwt.JwtClaims;
 
 import java.util.Map;
 
 public class TokenClaims {
-    private JsonWebToken standardClaims;
+    private JwtClaims standardClaims;
     private Map<String, Object> extra;
 
-    public TokenClaims(JsonWebToken standardClaims, Map<String, Object> extra) {
+    public TokenClaims(JwtClaims standardClaims, Map<String, Object> extra) {
         this.standardClaims = standardClaims;
         this.extra = extra;
     }
 
-    public JsonWebToken getStandardClaims() {
+    public JwtClaims getStandardClaims() {
         return standardClaims;
     }
 
-    public void setStandardClaims(JsonWebToken standardClaims) {
+    public void setStandardClaims(JwtClaims standardClaims) {
         this.standardClaims = standardClaims;
     }
 

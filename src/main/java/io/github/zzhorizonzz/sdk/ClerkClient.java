@@ -1,7 +1,6 @@
 package io.github.zzhorizonzz.sdk;
 
-import com.microsoft.kiota.authentication.AccessTokenProvider;
-import com.microsoft.kiota.authentication.AllowedHostsValidator;
+import com.microsoft.kiota.RequestAdapter;
 import io.github.zzhorizonzz.sdk.jwk.JWKCache;
 import io.github.zzhorizonzz.sdk.jwk.JWKService;
 import io.github.zzhorizonzz.sdk.jwt.JWTService;
@@ -9,23 +8,19 @@ import io.github.zzhorizonzz.sdk.jwt.VerifyTokenOptions;
 import io.github.zzhorizonzz.sdk.session.SessionClaims;
 import io.github.zzhorizonzz.sdk.user.UserService;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jose4j.jwk.JsonWebKey;
 import org.jose4j.jwk.JsonWebKeySet;
 
-import java.net.URI;
-import java.util.Map;
-
 @Getter
-public class ClerkClient implements AccessTokenProvider {
-    private final String token;
+public class ClerkClient {
     private final JWKCache jwksCache;
     private final JWKService jwksService;
     private final UserService userService;
+    private final RequestAdapter requestAdapter;
 
-    public ClerkClient(String token) {
-        this.token = token;
+    public ClerkClient(RequestAdapter requestAdapter) {
+        this.requestAdapter = requestAdapter;
+
         this.jwksCache = new JWKCache();
         this.jwksService = new JWKService(this);
         this.userService = new UserService(this);
@@ -43,17 +38,5 @@ public class ClerkClient implements AccessTokenProvider {
         }
 
         return jwksCache.get(kid);
-    }
-
-    @NotNull
-    @Override
-    public String getAuthorizationToken(@NotNull URI uri, @Nullable Map<String, Object> additionalAuthenticationContext) {
-        return token;
-    }
-
-    @NotNull
-    @Override
-    public AllowedHostsValidator getAllowedHostsValidator() {
-        return new AllowedHostsValidator();
     }
 }

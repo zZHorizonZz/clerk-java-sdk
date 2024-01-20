@@ -29,16 +29,6 @@
         </dependency>
         <dependency>
             <groupId>com.microsoft.kiota</groupId>
-            <artifactId>microsoft-kiota-authentication-azure</artifactId>
-            <version>${microsoft.kiota.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.kiota</groupId>
-            <artifactId>microsoft-kiota-http-okHttp</artifactId>
-            <version>${microsoft.kiota.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.microsoft.kiota</groupId>
             <artifactId>microsoft-kiota-serialization-json</artifactId>
             <version>${microsoft.kiota.version}</version>
         </dependency>
@@ -73,19 +63,9 @@
             <version>3.0.0-M1</version>
         </dependency>
         <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt</artifactId>
-            <version>${quarkus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-smallrye-jwt-build</artifactId>
-            <version>${quarkus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.kiota</groupId>
-            <artifactId>kiota-http-vertx</artifactId>
-            <version>${kiota.plugin.version}</version>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

@@ -1,12 +1,8 @@
 package io.github.zzhorizonzz.sdk.jwt;
 
-import io.github.zzhorizonzz.sdk.session.SessionClaims;
 import io.github.zzhorizonzz.sdk.BaseService;
 import io.github.zzhorizonzz.sdk.ClerkClient;
-import io.smallrye.jwt.auth.principal.DefaultJWTCallerPrincipalFactory;
-import io.smallrye.jwt.auth.principal.JWTAuthContextInfo;
-import io.smallrye.jwt.auth.principal.JWTCallerPrincipalFactory;
-import org.eclipse.microprofile.jwt.JsonWebToken;
+import io.github.zzhorizonzz.sdk.session.SessionClaims;
 import org.jose4j.jwk.JsonWebKey;
 import org.jose4j.jwk.PublicJsonWebKey;
 import org.jose4j.jwt.JwtClaims;
@@ -15,9 +11,9 @@ import org.jose4j.jwt.consumer.JwtConsumerBuilder;
 import org.jose4j.jwt.consumer.JwtContext;
 
 import java.security.PublicKey;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class JWTService extends BaseService {
 
@@ -27,26 +23,21 @@ public class JWTService extends BaseService {
         super(clerkClient);
     }
 
-    public TokenClaims decodeToken(String token, VerifyTokenOptions options) throws Exception {
-        PublicKey verificationKey = convertToPublicKey(options.getJwk());
-        JWTAuthContextInfo contextInfo = new JWTAuthContextInfo(verificationKey, "issuer"); // "issuer" should be replaced with your expected issuer
+    public TokenClaims decodeToken(String token) throws Exception {
+        JwtConsumer jwtConsumer = new JwtConsumerBuilder()
+                .setSkipAllValidators()
+                .setDisableRequireSignature()
+                .setSkipSignatureVerification()
+                .build();
 
-        JWTCallerPrincipalFactory factory = DefaultJWTCallerPrincipalFactory.instance();
-        JsonWebToken parsedToken = factory.parse(token, contextInfo);
+        JwtContext jwtContext = jwtConsumer.process(token);
+        JwtClaims jwtClaims = jwtContext.getJwtClaims();
 
-        /*
-         * JsonObject standardClaims = parsedToken.getClaimNames().stream()
-         * .filter(STANDARD_CLAIMS_KEYS::contains)
-         * .collect(Json::createObjectBuilder, (builder, key) -> builder.add(key, parsedToken.getClaim(key)),
-         * JsonObject::addAll)
-         * .build();
-         */
+        Map<String, Object> allClaims = jwtClaims.getClaimsMap();
+        Map<String, Object> extraClaims = new HashMap<>(allClaims);
+        STANDARD_CLAIMS_KEYS.forEach(extraClaims::remove);
 
-        Map<String, Object> extraClaims = parsedToken.getClaimNames().stream()
-                .filter(key -> !STANDARD_CLAIMS_KEYS.contains(key))
-                .collect(Collectors.toMap(key -> key, parsedToken::getClaim));
-
-        return new TokenClaims(parsedToken, extraClaims);
+        return new TokenClaims(jwtClaims, extraClaims);
     }
 
     public SessionClaims verifyToken(String token, VerifyTokenOptions options) throws Exception {
