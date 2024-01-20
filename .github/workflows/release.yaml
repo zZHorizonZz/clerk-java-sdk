@@ -30,7 +30,7 @@ jobs:
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Build and Deploy to Maven Central
-        run: mvn clean deploy -P release --settings .maven.xml
+        run: mvn clean deploy --settings .maven.xml
         env:
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
