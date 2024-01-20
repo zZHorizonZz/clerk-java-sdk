@@ -52,8 +52,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
 
       - name: Set up Java JDK 17
         uses: actions/setup-java@v2
@@ -71,5 +69,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update version to ${{ env.NEW_VERSION }}"
-          branch: ${{ github.ref }}
+          branch: main
           file_pattern: pom.xml
