@@ -37,7 +37,7 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
 
   update-project-version:
-    needs: publish-to-maven-central
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
