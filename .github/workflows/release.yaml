@@ -48,8 +48,7 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      packages: write
+      contents: write
     steps:
       - name: Check out code
         uses: actions/checkout@v4
