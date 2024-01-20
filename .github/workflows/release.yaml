@@ -47,9 +47,14 @@ jobs:
     name: Update project version
     needs: build-and-deploy
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
 
       - name: Set up Java JDK 17
         uses: actions/setup-java@v2
@@ -63,10 +68,9 @@ jobs:
           mvn versions:set -DnewVersion=$NEW_VERSION
           mvn versions:commit
 
-      - name: Commit and Push
-        run: |
-          git config --global user.name 'zZHorizonZz'
-          git config --global user.email 'danfiala23@gmail.com'
-          git add pom.xml
-          git commit -m "Update version to $NEW_VERSION"
-          git push origin HEAD:main
+      - name: Auto Commit Changed Files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update version to ${{ env.NEW_VERSION }}"
+          branch: ${{ github.ref }}
+          file_pattern: pom.xml
