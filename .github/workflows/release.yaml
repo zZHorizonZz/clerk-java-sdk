@@ -26,12 +26,9 @@ jobs:
           NEW_VERSION=$(echo $GITHUB_REF | sed -e "s/refs\/tags\///")
           mvn versions:set -DnewVersion=$NEW_VERSION
 
-      - id: install-secret-key
-        name: Install gpg secret key
+      - name: Import GPG Key
         run: |
-          # Install gpg secret key
-          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
-          # Verify gpg secret key
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
           gpg --list-secret-keys --keyid-format LONG
 
       - name: Publish to the Maven Central Repository
