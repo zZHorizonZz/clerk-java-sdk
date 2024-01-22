@@ -2,7 +2,7 @@ package io.github.zzhorizonzz.sdk.common.mapping;
 
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(config = BaseMapper.class)
 public interface NumberMapper {
 
     default Integer mapDoubleToInt(Double value) {

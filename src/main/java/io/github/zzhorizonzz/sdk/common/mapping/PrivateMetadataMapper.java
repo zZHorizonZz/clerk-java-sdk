@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import java.util.Map;
 
-@Mapper
+@Mapper(config = BaseMapper.class)
 public interface PrivateMetadataMapper {
     default UsersPostRequestBodyPrivateMetadata toUsersPostRequest(Map<String, Object> source) {
         UsersPostRequestBodyPrivateMetadata target = new UsersPostRequestBodyPrivateMetadata();

@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import java.util.Map;
 
-@Mapper
+@Mapper(config = BaseMapper.class)
 public interface UnsafeMetadataMapper {
     default UsersPostRequestBodyUnsafeMetadata toUsersPostRequest(Map<String, Object> source) {
         UsersPostRequestBodyUnsafeMetadata target = new UsersPostRequestBodyUnsafeMetadata();

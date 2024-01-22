@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import java.util.Map;
 
-@Mapper
+@Mapper(config = BaseMapper.class)
 public interface PublicMetadataMapper {
     default UsersPostRequestBodyPublicMetadata toUsersPostRequest(Map<String, Object> source) {
         UsersPostRequestBodyPublicMetadata target = new UsersPostRequestBodyPublicMetadata();

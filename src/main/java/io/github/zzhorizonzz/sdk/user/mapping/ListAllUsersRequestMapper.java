@@ -1,5 +1,6 @@
 package io.github.zzhorizonzz.sdk.user.mapping;
 
+import io.github.zzhorizonzz.sdk.common.mapping.BaseMapper;
 import io.github.zzhorizonzz.sdk.common.mapping.NumberMapper;
 import io.github.zzhorizonzz.sdk.user.request.ListAllUsersRequest;
 import io.github.zzhorizonzz.client.users.UsersRequestBuilder;
@@ -8,7 +9,7 @@ import org.mapstruct.Mapper;
 
 import java.util.Arrays;
 
-@Mapper(uses = {NumberMapper.class})
+@Mapper(config = BaseMapper .class, uses = {NumberMapper.class})
 public interface ListAllUsersRequestMapper {
 
 
