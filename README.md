@@ -105,7 +105,7 @@ final ClerkClient client = new ClerkClient(adapter);
 You can create a new user using the `UserService`:
 
 ```java
-UserService userService = new UserService(client);
+UserService userService = client.getUserService();
 CreateUserRequest request = new CreateUserRequest();
 // Set required request parameters
 User newUser = userService.createUser(request);
@@ -116,7 +116,7 @@ User newUser = userService.createUser(request);
 Verify the JWT tokens using `JWTService`:
 
 ```java
-JWTService jwtService = new JWTService(client);
+JWTService jwtService = client.getJWTService();
 SessionClaims claims = jwtService.verifyToken("YOUR_JWT_TOKEN", new VerifyTokenOptions());
 ```
 
