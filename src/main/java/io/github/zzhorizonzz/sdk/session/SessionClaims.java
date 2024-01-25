@@ -6,6 +6,10 @@ import org.jose4j.jwt.MalformedClaimException;
 
 import java.util.Arrays;
 
+/**
+ * Represents session-related claims extracted from a JWT (JSON Web Token).
+ * This class includes various properties such as session ID, authorized party, and organization-related information.
+ */
 @Data
 public class SessionClaims {
     private JwtClaims claims;
@@ -17,33 +21,48 @@ public class SessionClaims {
     private String[] activeOrganizationPermissions;
     private String rawJson;
 
+    /**
+     * Constructs SessionClaims from a set of JWT claims.
+     *
+     * @param claims The JWT claims from which session-related information will be extracted.
+     */
     public SessionClaims(JwtClaims claims) {
         this.claims = claims;
         this.rawJson = claims.getRawJson();
 
         try {
-            if (claims.hasClaim("session_id")) {
-                this.sessionId = claims.getStringClaimValue("sid");
-            }
-
-            if (claims.hasClaim("authorized_party")) {
-                this.authorizedParty = claims.getStringClaimValue("azp");
-            }
-
-            if (claims.hasClaim("active_organization_slug")) {
-                this.activeOrganizationSlug = claims.getStringClaimValue("org_slug");
-            }
-
-            if (claims.hasClaim("active_organization_role")) {
-                this.activeOrganizationRole = claims.getStringClaimValue("org_role");
-            }
-
-            if (claims.hasClaim("active_organization_permissions")) {
-                this.activeOrganizationPermissions = claims.getStringListClaimValue("active_organization_permissions")
-                        .toArray(new String[0]);
-            }
+            extractClaims(claims);
         } catch (MalformedClaimException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error extracting session claims", e);
+        }
+    }
+
+    /**
+     * Extracts session-related claims from the given JWT claims.
+     *
+     * @param claims The JWT claims to extract information from.
+     * @throws MalformedClaimException If a claim is malformed.
+     */
+    private void extractClaims(JwtClaims claims) throws MalformedClaimException {
+        if (claims.hasClaim("session_id")) {
+            this.sessionId = claims.getStringClaimValue("sid");
+        }
+
+        if (claims.hasClaim("authorized_party")) {
+            this.authorizedParty = claims.getStringClaimValue("azp");
+        }
+
+        if (claims.hasClaim("active_organization_slug")) {
+            this.activeOrganizationSlug = claims.getStringClaimValue("org_slug");
+        }
+
+        if (claims.hasClaim("active_organization_role")) {
+            this.activeOrganizationRole = claims.getStringClaimValue("org_role");
+        }
+
+        if (claims.hasClaim("active_organization_permissions")) {
+            this.activeOrganizationPermissions = claims.getStringListClaimValue("active_organization_permissions")
+                    .toArray(new String[0]);
         }
     }
 

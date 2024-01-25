@@ -1,10 +1,16 @@
 package io.github.zzhorizonzz.sdk.jwt;
 
+import lombok.Data;
 import org.jose4j.jwk.JsonWebKey;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * Holds options for verifying a JWT (JSON Web Token).
+ * This class includes various settings such as authorized parties, time leeway,
+ * JsonWebKey for verification, and custom configuration for satellite domains and proxy URLs.
+ */
+@Data
 public class VerifyTokenOptions {
     private Map<String, Void> authorizedParties;
     private long leeway; // Time in milliseconds
@@ -13,6 +19,12 @@ public class VerifyTokenOptions {
     private String proxyURL;
     private Map<String, Object> customClaims;
 
+    /**
+     * Applies the settings from another VerifyTokenOptions instance to this instance.
+     * This method selectively updates the fields if they are set in the provided options object.
+     *
+     * @param options The VerifyTokenOptions instance from which to copy the settings.
+     */
     public void apply(VerifyTokenOptions options) {
         if (options == null) {
             return;
@@ -37,57 +49,5 @@ public class VerifyTokenOptions {
         if (options.getProxyURL() != null) {
             this.proxyURL = options.getProxyURL();
         }
-    }
-
-    public Map<String, Void> getAuthorizedParties() {
-        return authorizedParties;
-    }
-
-    public void setAuthorizedParties(Map<String, Void> authorizedParties) {
-        this.authorizedParties = authorizedParties;
-    }
-
-    public long getLeeway() {
-        return leeway;
-    }
-
-    public void setLeeway(long leeway, TimeUnit unit) {
-        this.leeway = TimeUnit.MILLISECONDS.convert(leeway, unit);
-    }
-
-    public void setLeeway(long leeway) {
-        this.leeway = leeway;
-    }
-
-    public JsonWebKey getJwk() {
-        return jwk;
-    }
-
-    public void setJwk(JsonWebKey jwk) {
-        this.jwk = jwk;
-    }
-
-    public boolean isSatellite() {
-        return isSatellite;
-    }
-
-    public void setSatellite(boolean isSatellite) {
-        this.isSatellite = isSatellite;
-    }
-
-    public String getProxyURL() {
-        return proxyURL;
-    }
-
-    public void setProxyURL(String proxyURL) {
-        this.proxyURL = proxyURL;
-    }
-
-    public Map<String, Object> getCustomClaims() {
-        return customClaims;
-    }
-
-    public void setCustomClaims(Map<String, Object> customClaims) {
-        this.customClaims = customClaims;
     }
 }
