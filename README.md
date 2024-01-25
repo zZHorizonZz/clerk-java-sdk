@@ -123,7 +123,7 @@ SessionClaims claims = jwtService.verifyToken("YOUR_JWT_TOKEN", new VerifyTokenO
 ## Documentation
 
 For more detailed documentation, including all available methods and their usage, please refer
-to [Documentation](LINK_TO_DOCUMENTATION).
+to [Documentation](https://github.com/zZHorizonZz/clerk-java-sdk/wiki).
 
 ## Contribution
 
