@@ -18,8 +18,8 @@ public interface ListAllUsersRequestMapper {
             return null;
         }
 
-        getQueryParameters.limit = (double) params.getLimit();
-        getQueryParameters.offset = (double) params.getOffset();
+        getQueryParameters.limit = params.getLimit();
+        getQueryParameters.offset = params.getOffset();
         getQueryParameters.lastActiveAtSince = Math.toIntExact(params.getLastActiveAtSince());
 
         String[] emailAddress = params.getEmailAddress();

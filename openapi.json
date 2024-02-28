@@ -3552,14 +3552,14 @@
                     "nullable": false
                   },
                   "lifetime": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 30,
                     "maximum": 315360000,
                     "description": "JWT token lifetime",
                     "nullable": true
                   },
                   "allowed_clock_skew": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
                     "maximum": 300,
                     "description": "JWT token allowed clock skew",
@@ -3664,14 +3664,14 @@
                     "nullable": false
                   },
                   "lifetime": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 30,
                     "maximum": 315360000,
                     "description": "JWT token lifetime",
                     "nullable": true
                   },
                   "allowed_clock_skew": {
-                    "type": "number",
+                    "type": "integer",
                     "minimum": 0,
                     "maximum": 300,
                     "description": "JWT token allowed clock skew",
@@ -5546,7 +5546,7 @@
         "description": "Applies a limit to the number of results returned.\nCan be used for paginating the results together with `offset`.\nMust be an integer greater than zero and less than 500.\nBy default, if not supplied, a limit of 10 is used.",
         "required": false,
         "schema": {
-          "type": "number",
+          "type": "integer",
           "default": 10,
           "minimum": 1,
           "maximum": 500
@@ -5558,7 +5558,7 @@
         "description": "Skip the first `offset` results when paginating.\nNeeds to be an integer greater or equal to zero.\nTo be used in conjunction with `limit`.",
         "required": false,
         "schema": {
-          "type": "number",
+          "type": "integer",
           "default": 0,
           "minimum": 0
         }

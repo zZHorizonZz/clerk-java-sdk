@@ -29,7 +29,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <microsoft.kiota.version>0.12.1</microsoft.kiota.version>
+        <microsoft.kiota.version>1.0.4</microsoft.kiota.version>
         <kiota.plugin.version>0.0.13</kiota.plugin.version>
         <microprofile-jwt-auth-api.version>2.1</microprofile-jwt-auth-api.version>
         <org.projectlombok.version>1.18.30</org.projectlombok.version>

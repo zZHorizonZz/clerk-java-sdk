@@ -10,8 +10,8 @@ import org.mapstruct.Mapper;
 public interface ListMembershipsRequestMapper {
 
     default OrganizationMembershipsRequestBuilder.GetQueryParameters mapToGetQueryParameters(ListMembershipsRequest params, OrganizationMembershipsRequestBuilder.GetQueryParameters getQueryParameters) {
-        getQueryParameters.limit = (double) params.getLimit();
-        getQueryParameters.offset = (double) params.getOffset();
+        getQueryParameters.limit = params.getLimit();
+        getQueryParameters.offset = params.getOffset();
         return getQueryParameters;
     }
 }
