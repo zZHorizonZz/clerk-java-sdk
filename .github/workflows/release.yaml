@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Set up Java for publishing to Maven Central Repository
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -54,7 +54,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'adopt'
@@ -68,6 +68,6 @@ jobs:
       - name: Auto Commit Changed Files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Update version to $NEW_VERSION"
+          commit_message: "Update project version to ${{ github.ref }}"
           branch: master
           file_pattern: pom.xml
