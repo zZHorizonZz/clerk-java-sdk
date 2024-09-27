@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> This repository is currently read-only. Clerk has released a official java sdk which should be used instead of this. [Official SDK](https://github.com/clerk/clerk-sdk-java)
+
 # Clerk - Java - SDK (Unofficial)
 
 This SDK is an unofficial Java implementation for interacting with Clerk services. It is important to note that this SDK
